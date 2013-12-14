@@ -1,8 +1,8 @@
 {
   "name": "hydro-focus",
   "repo": "hydrojs/hydro-focus",
-  "description": "",
-  "version": "0.0.0",
+  "description": "Run only the first test with 'focus' tag",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "index.js",
   "scripts": [
