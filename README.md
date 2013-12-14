@@ -7,7 +7,7 @@ version](https://badge.fury.io/js/hydro-focus.png)](http://badge.fury.io/js/hydr
 
 ## Synopsis
 
-Abort hydro tests on first failure.
+Run only the first test with "focus" tag
 
 ## Usage
 
