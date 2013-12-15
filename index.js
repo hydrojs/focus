@@ -9,8 +9,8 @@ module.exports = function(hydro) {
   if (!hydro.get('focus')) return;
   var focus = false;
   hydro.on('pre:test', function(test) {
-    if (focus) return test.skip();
-    if (test.meta.indexOf('focus') != -1) focus = true;
+    if (focus || test.meta.indexOf('focus') == -1) return test.skip();
+    focus = true;
   });
 };
 
