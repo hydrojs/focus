@@ -5,12 +5,13 @@
  * @api public
  */
 
-module.exports = function(hydro) {
+module.exports = function(hydro, _) {
   var focus = false;
   var enabled = false;
 
   hydro.on('pre:all', function() {
-    hydro.tests().forEach(function(test) {
+    var tests = hydro.tests();
+    _.forEach(hydro.tests(), function(test) {
       if (test.meta.indexOf('focus') !== -1) enabled = true;
     });
   });
