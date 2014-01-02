@@ -7,7 +7,6 @@ test('focus on', function(done) {
   hydro.set({
     attach: global,
     plugins: [plugin],
-    focus: true,
     proxies: {
       'describe': 'addSuite',
       'it': 'addTest',

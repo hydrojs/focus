@@ -15,15 +15,8 @@ Config:
 
 ```js
 hydro.set({
-  plugins: ['hydro-focus'],
-  focus: true
+  plugins: ['hydro-focus']
 });
-```
-
-CLI:
-
-```bash
-$ hydro --focus
 ```
 
 ## Installation

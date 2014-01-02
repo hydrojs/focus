@@ -1,5 +1,5 @@
 describe('focus', function() {
-  it('has focus', 'focus', function() {});
-  it('had focus too', 'focus', function() {});
-  it('had focus three', 'focus', function() {});
+  it('no focus', function() {});
+  it('no focus too', function() {});
+  it('no focus yep', function() {});
 });
