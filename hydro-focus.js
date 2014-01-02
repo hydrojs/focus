@@ -208,21 +208,22 @@ require.register("hydro-focus/index.js", function(exports, require, module){
  * @api public
  */
 
-module.exports = function(hydro) {
-  if (!hydro.get('focus')) return;
+module.exports = function(hydro, _) {
   var focus = false;
+  var enabled = false;
+
+  hydro.on('pre:all', function() {
+    var tests = hydro.tests();
+    _.forEach(hydro.tests(), function(test) {
+      if (test.meta.indexOf('focus') !== -1) enabled = true;
+    });
+  });
+
   hydro.on('pre:test', function(test) {
+    if (!enabled) return;
     if (focus || test.meta.indexOf('focus') == -1) return test.skip();
     focus = true;
   });
-};
-
-/**
- * CLI flags.
- */
-
-module.exports.flags = {
-  '--focus': 'run the first test with "focus" tag'
 };
 
 });
