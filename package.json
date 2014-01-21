@@ -1,6 +1,6 @@
 {
   "name": "hydro-focus",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Run only the first test with 'focus' tag",
   "keywords": [
     "hydroplugin",
