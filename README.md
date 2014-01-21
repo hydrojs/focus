@@ -18,6 +18,20 @@ hydro.set({
 });
 ```
 
+With meta tag:
+
+```js
+test('focus method on test', 'focus', function() {
+});
+```
+
+By invoking a method:
+
+```js
+test('focus method on test', function() {
+}).focus();
+```
+
 ## Installation
 
 #### npm:
