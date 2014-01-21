@@ -26,6 +26,30 @@ test('with focus tag', function(done) {
   hydro.run();
 });
 
+test('focus method on test', function(done) {
+  var hydro = Hydro();
+
+  hydro.push('plugins', plugin);
+
+  hydro.addSuite('with focus test', function() {
+    hydro.addTest('has focus', function(){}).focus();
+    hydro.addTest('no focus', function(){});
+    hydro.addTest('no focus too', function(){});
+  });
+
+  hydro.on('post:all', function() {
+    var tests = hydro.tests();
+
+    assert(tests[0].status === 'passed');
+    assert(tests[1].status === 'skipped');
+    assert(tests[2].status === 'skipped');
+
+    done();
+  });
+
+  hydro.run();
+});
+
 test('no focus', function(done) {
   var hydro = Hydro();
 

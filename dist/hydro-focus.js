@@ -211,6 +211,17 @@ require.register("hydro-focus/index.js", function(exports, require, module){
 module.exports = function(hydro, _) {
   var focus = false;
   var enabled = false;
+  var Test = null;
+
+  if (typeof Hydro === 'undefined') {
+    Test = require('hydro').Test;
+  } else {
+    Test = Hydro.Test;
+  }
+
+  Test.prototype.focus = function() {
+    this.meta.push('focus');
+  };
 
   hydro.on('pre:all', function() {
     var tests = hydro.tests();
