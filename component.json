@@ -9,6 +9,8 @@
     "index.js"
   ],
   "development": {
-    "chaijs/simple-assert": "*"
+    "chaijs/simple-assert": "*",
+    "hydrojs/hydro-require": "*",
+    "hydrojs/hydro": "*"
   }
 }

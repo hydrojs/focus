@@ -1,49 +1,49 @@
-var Hydro = require('hydro');
+var plugin = typeof window === 'undefined'
+  ? require('../')
+  : require('hydro-focus');
 
-test('focus on', function(done) {
+test('with focus tag', function(done) {
   var hydro = Hydro();
-  var plugin = require('../');
 
-  hydro.set({
-    attach: global,
-    plugins: [plugin],
-    proxies: {
-      'describe': 'addSuite',
-      'it': 'addTest',
-    },
-    tests: [__dirname + '/fixtures/1.js']
+  hydro.push('plugins', plugin);
+
+  hydro.addSuite('with focus test', function() {
+    hydro.addTest('has focus', 'focus', function(){});
+    hydro.addTest('no focus', function(){});
+    hydro.addTest('no focus too', function(){});
   });
 
   hydro.on('post:all', function() {
     var tests = hydro.tests();
+
     assert(tests[0].status === 'passed');
     assert(tests[1].status === 'skipped');
     assert(tests[2].status === 'skipped');
+
     done();
   });
 
   hydro.run();
 });
 
-test('focus off', function(done) {
+test('no focus', function(done) {
   var hydro = Hydro();
-  var plugin = require('../');
 
-  hydro.set({
-    attach: global,
-    plugins: [plugin],
-    proxies: {
-      'describe': 'addSuite',
-      'it': 'addTest',
-    },
-    tests: [__dirname + '/fixtures/2.js']
+  hydro.push('plugins', plugin);
+
+  hydro.addSuite('with focus test', function() {
+    hydro.addTest('has no focus', function(){});
+    hydro.addTest('no focus', function(){});
+    hydro.addTest('no focus too', function(){});
   });
 
   hydro.on('post:all', function() {
     var tests = hydro.tests();
+
     assert(tests[0].status === 'passed');
     assert(tests[1].status === 'passed');
     assert(tests[2].status === 'passed');
+
     done();
   });
 

@@ -7,14 +7,17 @@
 
 module.exports = function(hydro) {
   hydro.set({
-    attach: global,
+    suite: 'hydro-focus',
+    formatter: 'hydro-simple',
+    plugins: [
+      'hydro-require',
+    ],
     proxies: {
       test: 'addTest'
     },
-    suite: 'hydro-focus',
-    formatter: 'hydro-simple',
-    globals: {
-      assert: require('simple-assert')
+    require: {
+      assert: 'simple-assert',
+      Hydro: 'hydro'
     },
     tests: [
       'test/*.js'
